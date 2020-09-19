@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-image: url('img/13.jpg'); 
+            background-size: cover;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item { 
+            width: 200px;
+            height: 200px;
+            margin-top: 50px;
+            margin-left: 50px;
+
+        }
+
+        .item img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item :hover {
+            transform: scale(1.2);
+        }
+
+
+    </style>
+
+
+
+    <title>Zuko</title>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <script>
+        const numImgs = 12;
+
+        const imgPaths = Array.from({ length: numImgs });
+
+        imgPaths.forEach((e,i) => {
+            imgPaths[i]=`img/${i}.jpg`;
+            });
+
+        console.log(imgPaths);
+
+        imgPaths.sort((a,b) => (0.5 - Math.random()) );
+
+        const makeDiv = () => document.createElement('div');
+
+        const divs = Array.from({ length: numImgs }, ()=> makeDiv());
+
+        divs.forEach(div=>div.className='item');
+ 
+        const makeImg = () => document.createElement('img');
+
+        const imgs = Array.from({ length: numImgs }, ()=>makeImg());
+        
+        imgs.forEach((img, i) => img.src=imgPaths[i]);
+
+        const container = document.querySelector('.container');
+
+        divs.forEach((div, i)=>{
+            div.appendChild(imgs[i]);
+            container.appendChild(div);
+            
+        })
+
+    </script>
+
+</body>
+</html>
+
